@@ -1,0 +1,1 @@
+SELECT P.prod, P.cat FROM (SELECT product.name AS prod, product.id AS prod_id, product.category_id AS prod_cat_id, category.name AS cat, category.id AS cat_id, category.product_id AS cat_prod_id FROM product LEFT JOIN category ON product.id = category.product_id) P
