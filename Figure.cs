@@ -19,7 +19,7 @@ namespace Figures
 
         }
 
-        public virtual double CountSquare()
+        public virtual double getFigureArea()
         {
             if (values.Count == 1)
             {
@@ -47,7 +47,7 @@ namespace Figures
         {
             values.Add(radius);
         }
-        public override double CountSquare()
+        public override double getFigureArea()
         {
             return Math.Pow(values[0], 2) * Math.PI;
         }
@@ -66,7 +66,7 @@ namespace Figures
             values.Add(secondside);
             values.Add(thirdside);
         }
-        public int Check()
+        public int checkTriangleType()
         {
             for (int i = 0; i < values.Count; i++)
             {
@@ -93,7 +93,7 @@ namespace Figures
             }
         }
 
-        public double MultiSides(List<double> sides)
+        public double multiplySides(List<double> sides)
         {
             double multi = 1;
 
@@ -103,7 +103,7 @@ namespace Figures
             return multi;
         }
 
-        public double Perimeter(List<double> sides)
+        public double getPerimeter(List<double> sides)
         {
             double sum = 0;
 
@@ -113,17 +113,17 @@ namespace Figures
             return sum;
         }
 
-        public double CountHalfPerimeter() => Perimeter(values) / 2;
-        public override double CountSquare()
+        public double getHalfPerimeter() => getPerimeter(values) / 2;
+        public override double getFigureArea()
         {
-            switch (Check())
+            switch (checkTriangleType())
             {
                 case 0:
-                    return Math.Sqrt(CountHalfPerimeter() * (CountHalfPerimeter() - values[0]) * (CountHalfPerimeter() - values[1]) * (CountHalfPerimeter() - values[2]));
+                    return Math.Sqrt(CountHalfPerimeter() * (getHalfPerimeter() - values[0]) * (getHalfPerimeter() - values[1]) * (getHalfPerimeter() - values[2]));
                 case 1:
-                    return MultiSides(values) / 2;
+                    return multiplySides(values) / 2;
                 case 2:
-                    return MultiSides(values);
+                    return multiplySides(values);
             }
             return -1;
         }
